@@ -24,14 +24,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UICollectionViewFlowLayout * layout =  (id) self.collectionView.collectionViewLayout;
+    layout.itemSize = self.view.frame.size;
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier: @"1"];
-
+    
+    self.pageControl.numberOfPages = 5;
 
 }
 
-
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 5;
+}
+
+-(bool) prefersStatusBarHidden {
+    return YES;
+}
+//-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+ {
+    [super viewDidLoad];
+    UICollectionViewFlowLayout * layout =  (id) self.collectionView.collectionViewLayout;
+    layout.itemSize = self.view.frame.size;
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier: @"1"];
+    
+    self.pageControl.numberOfPages = 5;
+     self.collectionView.contentOffset = CGPointZero;
+     
+    [self.collectionView reloadData];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -40,6 +59,9 @@
     return cell;
 }
 
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    self.pageControl.currentPage = self.collectionView.contentOffset.x / self.collectionView.frame.size.width;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
