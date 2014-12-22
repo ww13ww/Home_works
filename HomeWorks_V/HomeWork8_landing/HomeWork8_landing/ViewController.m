@@ -11,6 +11,7 @@
 
 @interface ViewController() <UICollectionViewDataSource, UICollectionViewDelegate>
 //@interface ViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
