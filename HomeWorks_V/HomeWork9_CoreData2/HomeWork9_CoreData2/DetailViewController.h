@@ -14,33 +14,18 @@
 
 @property (strong, nonatomic) id detailItem;
 
-//текст таска
-@property (weak, nonatomic) IBOutlet UITextField *infoTaskEdit;         //editTask
-- (IBAction) changeTextTask:(id)sender;                                 //changingTask
+//task text field
+@property (weak, nonatomic) IBOutlet UITextField *infoTaskEdit;
+- (IBAction) changeTextTask:(id)sender;
 
-//переключатель - сделано/не сделано
+//segment control DONE/UNDONE
 @property (strong, nonatomic) NSManagedObject *switchTask;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *checkDoneTask;
-//UISegmentedControl *checkTask;
 - (IBAction)DoneSwitchTask:(id)sender;
-//@property (weak, nonatomic) IBOutlet UISegmentedControl *DoneSwitchTask;
-//- (IBAction)DoneSwitchTask:(id)sender;
 
-
-//редактирование/сейв/кенсел - все понятно и без коментариев
+// edit/cancel/save
 @property (strong, nonatomic) NSManagedObject *infoTask;
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;
 
-
 @end
-
-
-
-//
-//NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-//NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-//NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-
-
-//     detailController.infoTask = object ;
