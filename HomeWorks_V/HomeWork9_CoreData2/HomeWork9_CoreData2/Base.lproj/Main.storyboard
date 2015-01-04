@@ -22,13 +22,12 @@
         <!--Split View Controller-->
         <scene sceneID="I31-h7-K7C">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XLw-Ea-o1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <splitViewController id="0Yu-VR-1EW" sceneMemberID="viewController">
                     <connections>
                         <segue destination="rS3-R9-Ivy" kind="relationship" relationship="masterViewController" id="Qwm-VN-cj1"/>
-                        <segue destination="xde-Cz-7ga" kind="relationship" relationship="detailViewController" id="iZy-0n-G8M"/>
                     </connections>
                 </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XLw-Ea-o1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-988" y="48"/>
         </scene>
@@ -59,7 +58,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="xde-Cz-7ga" kind="showDetail" id="gp3-SC-Ain"/>
+                                    <segue destination="Ah7-4n-0Wa" kind="show" identifier="mySeque" id="Dv7-L6-vq0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -108,6 +107,9 @@
                                     <segment title="undone"/>
                                     <segment title="done"/>
                                 </segments>
+                                <connections>
+                                    <action selector="DoneSwitchTask:" destination="Ah7-4n-0Wa" eventType="valueChanged" id="ho4-t9-HvU"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -145,7 +147,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="checkTask" destination="smg-A5-HGh" id="5FR-Ky-qoP"/>
+                        <outlet property="checkDoneTask" destination="smg-A5-HGh" id="04F-39-tYR"/>
                         <outlet property="infoTaskEdit" destination="0V2-Rg-xaf" id="H6C-AY-yGx"/>
                     </connections>
                 </viewController>
@@ -153,24 +155,5 @@
             </objects>
             <point key="canvasLocation" x="745" y="898"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="5gQ-4G-F0c">
-            <objects>
-                <navigationController id="xde-Cz-7ga" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BBc-kg-yVA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Ah7-4n-0Wa" kind="relationship" relationship="rootViewController" id="dpz-Ys-yTm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cL4-Hu-8ZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-172" y="872"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="gp3-SC-Ain"/>
-    </inferredMetricsTieBreakers>
 </document>

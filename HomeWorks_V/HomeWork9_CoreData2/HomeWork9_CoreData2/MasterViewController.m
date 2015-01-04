@@ -15,7 +15,8 @@
 
 @implementation MasterViewController
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
 }
 
@@ -26,6 +27,8 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    //---------------------------------
+    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,6 +62,7 @@
         NSLog(@"You have clicked Ok");
         
         NSString *taskText = [alertView textFieldAtIndex:0].text;
+        NSString *switchTask = @"0";
         // если не пустая
         if (![taskText isEqualToString:@""])
         {
@@ -68,6 +72,7 @@
                 
             //If appropriate, configure the new managed object.
             // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+            [newManagedObject setValue:switchTask forKey:@"switch"];
             [newManagedObject setValue:taskText forKey:@"name"];
                 
             // Save the context.
@@ -88,16 +93,27 @@
 //  Этот метод будет вызван у контроллера из которого был начат переход
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"])
+    if ([[segue identifier] isEqualToString:@"mySeque"])//Проверяем тот ли это segue, который нам нужен
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-//        DetailViewController *
-        DetailViewController *detailController = (DetailViewController *)[[segue destinationViewController]topViewController];
+        DetailViewController *detailController = (DetailViewController *)segue.destinationViewController;
+        //[segue destinationViewController];// topViewController];
         detailController.infoTask = object ;
+        
 
 //        [[segue destinationViewController] setDetailItem:object];
     }
+//    - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//    {
+//        if ([segue.identifier isEqualToString:@"yourSegue"]) //Проверяем тот ли это segue, который нам нужен
+//        {
+//            nextViewController *nextController = (nextViewController *)segue.destinationViewController; //Создаем ссылку на viewController который будет вызван в результате segue
+//            
+//            [nextController setNeedValue: _needValue]; //инициализируем значение нужного viewController
+//        }
+//    }
+    
 }
 
 #pragma mark - Table View
