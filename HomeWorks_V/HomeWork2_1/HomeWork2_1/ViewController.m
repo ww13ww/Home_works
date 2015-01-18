@@ -9,6 +9,16 @@
 #import "ViewController.h"
 
 @interface ViewController () <NSURLConnectionDataDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *converterName;
+@property (weak, nonatomic) IBOutlet UILabel *moneyText1;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *pickerMoneySell;
+@property (weak, nonatomic) IBOutlet UILabel *moneyImputText;
+@property (weak, nonatomic) IBOutlet UITextField *moneyImputField;
+@property (weak, nonatomic) IBOutlet UILabel *moneyText2;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *pickerMoneyBuy;
+@property (weak, nonatomic) IBOutlet UIButton *resultBtn;
+@property (weak, nonatomic) IBOutlet UILabel *resultText;
+
 @property (nonatomic, strong) NSURLConnection *connection;
 @end
 
@@ -18,8 +28,7 @@
 {
     [super viewDidLoad];
 
-    NSString *urlString = @"https://query.yahooapis.com/v1/public/yql?q=select%20Bid%2CAsk%2CBidRealtime%2CAskRealtime%2CName%2CSymbol%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22USDRUB%3DX%2CEURRUB%3DX%2CBZQ15.NYM%2CEURUAH%3DX%2CUSDUAH%3DX%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
-//    NSString *urlString = @"https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5";
+    NSString *urlString = @"https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5";
     
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -29,15 +38,42 @@
 //    [connection start];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSLog(@"%@", response);
+
+//1// tap
+- (IBAction)tapButton:(UIButton *)sender {
+//    _tapButtonText.text = @"Button pressed";
 }
+
+- (IBAction)pickerMoneySell:(UISegmentedControl *)sender {
+//    _tapFirstSecondText.text = [sender titleForSegmentAtIndex:(NSUInteger) sender.selectedSegmentIndex];
+}
+
+- (IBAction)pickerMoneyBuy:(UISegmentedControl *)sender {
+    //    _tapFirstSecondText.text = [sender titleForSegmentAtIndex:(NSUInteger) sender.selectedSegmentIndex];
+}
+
+//3// imputText
+- (BOOL)moneyImputField:(UITextField *)textField {
+//    _textPlace.text = textField.text;
+    return YES;
+}
+
+
+//- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+//{
+//    NSLog(@"%@", response);
+//}
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    NSString *responce = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSString *responce = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 //    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSError *e = nil;
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    
+    if (!jsonArray) {
+        NSLog(@"Error parsing JSON: %@", e);
+    }
 }
 
 @end
