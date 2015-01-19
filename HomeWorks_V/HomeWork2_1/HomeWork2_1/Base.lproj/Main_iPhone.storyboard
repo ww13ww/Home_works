@@ -27,10 +27,10 @@
                                 <rect key="frame" x="31" y="131" width="259" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="грн"/>
-                                    <segment title="руб"/>
-                                    <segment title="долл"/>
-                                    <segment title="евро"/>
+                                    <segment title="UAH"/>
+                                    <segment title="RUR"/>
+                                    <segment title="USD"/>
+                                    <segment title="EUR"/>
                                 </segments>
                                 <connections>
                                     <action selector="pickerMoneySell:" destination="vXZ-lx-hvc" eventType="valueChanged" id="8Sh-cO-kVp"/>
@@ -40,10 +40,10 @@
                                 <rect key="frame" x="31" y="312" width="259" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="грн"/>
-                                    <segment title="руб"/>
-                                    <segment title="долл"/>
-                                    <segment title="евро"/>
+                                    <segment title="UAH"/>
+                                    <segment title="RUR"/>
+                                    <segment title="USD"/>
+                                    <segment title="EUR"/>
                                 </segments>
                                 <connections>
                                     <action selector="pickerMoneyBuy:" destination="vXZ-lx-hvc" eventType="valueChanged" id="PLX-on-QgR"/>

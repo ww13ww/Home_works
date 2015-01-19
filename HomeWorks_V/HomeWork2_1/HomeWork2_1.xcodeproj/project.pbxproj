@@ -22,6 +22,7 @@
 		75C2531D1A69C3590045E5CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C252FC1A69C3570045E5CC /* UIKit.framework */; };
 		75C253251A69C3590045E5CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C253231A69C3590045E5CC /* InfoPlist.strings */; };
 		75C253271A69C3590045E5CC /* HomeWork2_1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C253261A69C3590045E5CC /* HomeWork2_1Tests.m */; };
+		75C549BA1A6C8A3100FBD283 /* Currencys.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C549B91A6C8A3100FBD283 /* Currencys.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		75C253221A69C3590045E5CC /* HomeWork2_1Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HomeWork2_1Tests-Info.plist"; sourceTree = "<group>"; };
 		75C253241A69C3590045E5CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75C253261A69C3590045E5CC /* HomeWork2_1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeWork2_1Tests.m; sourceTree = "<group>"; };
+		75C549B81A6C8A3000FBD283 /* Currencys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currencys.h; sourceTree = "<group>"; };
+		75C549B91A6C8A3100FBD283 /* Currencys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currencys.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				75C2530D1A69C3570045E5CC /* Main_iPad.storyboard */,
 				75C253101A69C3570045E5CC /* ViewController.h */,
 				75C253111A69C3570045E5CC /* ViewController.m */,
+				75C549B81A6C8A3000FBD283 /* Currencys.h */,
+				75C549B91A6C8A3100FBD283 /* Currencys.m */,
 				75C253131A69C3570045E5CC /* Images.xcassets */,
 				75C252FF1A69C3570045E5CC /* Supporting Files */,
 			);
@@ -253,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75C549BA1A6C8A3100FBD283 /* Currencys.m in Sources */,
 				75C253121A69C3570045E5CC /* ViewController.m in Sources */,
 				75C253091A69C3570045E5CC /* AppDelegate.m in Sources */,
 				75C253051A69C3570045E5CC /* main.m in Sources */,

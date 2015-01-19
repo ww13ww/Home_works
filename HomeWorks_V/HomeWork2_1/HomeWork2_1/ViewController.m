@@ -5,7 +5,7 @@
 //  Created by Viktoria on 17.01.15.
 //  Copyright (c) 2015 Viktoria. All rights reserved.
 //
-
+#import "Currencys.h"
 #import "ViewController.h"
 
 @interface ViewController () <NSURLConnectionDataDelegate>
@@ -24,38 +24,25 @@
 
 @implementation ViewController
 
+NSString *inputCurrency1;
+NSString *inputCurrency2;
+NSString *inputText;
+NSString *outputText;
+NSArray *jsonArray;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self getCurrencys];
+//    [self performSelector:@selector(getCurrencys) withObject:nil afterDelay:2]
+}
 
+-(void) getCurrencys
+{
     NSString *urlString = @"https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5";
-    
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
-    
-//    connection = [NSURLConnection connectionWithRequest:request delegate:self];
-//    [connection start];
-}
-
-
-//1// tap
-- (IBAction)tapButton:(UIButton *)sender {
-//    _tapButtonText.text = @"Button pressed";
-}
-
-- (IBAction)pickerMoneySell:(UISegmentedControl *)sender {
-//    _tapFirstSecondText.text = [sender titleForSegmentAtIndex:(NSUInteger) sender.selectedSegmentIndex];
-}
-
-- (IBAction)pickerMoneyBuy:(UISegmentedControl *)sender {
-    //    _tapFirstSecondText.text = [sender titleForSegmentAtIndex:(NSUInteger) sender.selectedSegmentIndex];
-}
-
-//3// imputText
-- (BOOL)moneyImputField:(UITextField *)textField {
-//    _textPlace.text = textField.text;
-    return YES;
 }
 
 
@@ -66,14 +53,52 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-//    NSString *responce = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     NSError *e = nil;
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
     
     if (!jsonArray) {
         NSLog(@"Error parsing JSON: %@", e);
+        [self getCurrencys];
+        return;
     }
+    
+    NSMutableArray *currencies = [NSMutableArray array];
+    for (NSDictionary *current in jsonArray) {
+        Currencys *currencys = [Currencys new];
+        [currencys setValuesForKeysWithDictionary:current];
+        [currencies addObject:currencys];
+    }
+    
+//    Currencys *currencys = currencies[1];
+    NSString *a = jsonArray[1][@"base_ccy"];
+    NSLog(@"Some Text___ %@", a);
+    NSLog(@"%@",jsonArray);
+}
+
+
+
+
+//1// tap
+- (IBAction)tapButton:(UIButton *)sender {
+    //    _tapButtonText.text = @"Button pressed";
+}
+
+// picker
+- (IBAction)pickerMoneySell:(UISegmentedControl *)sender {
+    inputCurrency1 = [sender titleForSegmentAtIndex:(NSUInteger) sender.selectedSegmentIndex];
+    NSLog(@"____%@", inputCurrency1);
+//    NSLog(@"%@",jsonArray);
+}
+
+- (IBAction)pickerMoneyBuy:(UISegmentedControl *)sender {
+    inputCurrency2 = [sender titleForSegmentAtIndex:(NSUInteger) sender.selectedSegmentIndex];
+    NSLog(@"____%@", inputCurrency2);
+}
+
+//3// imputText
+- (BOOL)moneyImputField:(UITextField *)textField {
+    inputText = textField.text;
+    return YES;
 }
 
 @end
