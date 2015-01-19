@@ -13,8 +13,15 @@
 
 -(void) saveToUserDefaults
 {
-//    NSUserDefaults *defaults = [NSMutableDictionary dictionary];
-//    NSMutableDictionary
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
     // 57.38
+    info [@"ccy"] = self.ccy;
+    info [@"base_ccy"] = self.base_ccy;
+    info [@"sale"] = self.sale;
+    info [@"buy"] = self.buy;
+    
+    [defaults setObject:info forKey:self.ccy];
+    [defaults synchronize];
 }
 @end

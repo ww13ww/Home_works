@@ -33,6 +33,9 @@ NSArray *jsonArray;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSDictionary *info = [defaults object ForKey:@"RUR"];
+    
     [self getCurrencys];
 //    [self performSelector:@selector(getCurrencys) withObject:nil afterDelay:2]
 }
@@ -67,6 +70,8 @@ NSArray *jsonArray;
         Currencys *currencys = [Currencys new];
         [currencys setValuesForKeysWithDictionary:current];
         [currencies addObject:currencys];
+        NSLog(@"%@", currencys.ccy);
+        [currencys saveToUserDefaults];
     }
     
 //    Currencys *currencys = currencies[1];
