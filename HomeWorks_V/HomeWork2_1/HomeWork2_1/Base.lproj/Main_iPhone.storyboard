@@ -23,19 +23,6 @@
                                 <color key="textColor" red="0.39267689652681192" green="0.24652761621859773" blue="0.44293478260869568" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QXe-dN-yk8">
-                                <rect key="frame" x="31" y="131" width="259" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="UAH"/>
-                                    <segment title="RUR"/>
-                                    <segment title="USD"/>
-                                    <segment title="EUR"/>
-                                </segments>
-                                <connections>
-                                    <action selector="pickerMoneySell:" destination="vXZ-lx-hvc" eventType="valueChanged" id="8Sh-cO-kVp"/>
-                                </connections>
-                            </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CVd-ye-1Qd">
                                 <rect key="frame" x="31" y="312" width="259" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -49,12 +36,19 @@
                                     <action selector="pickerMoneyBuy:" destination="vXZ-lx-hvc" eventType="valueChanged" id="PLX-on-QgR"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hR0-Mn-E8H">
-                                <rect key="frame" x="59" y="225" width="202" height="30"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QXe-dN-yk8">
+                                <rect key="frame" x="31" y="131" width="259" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <segments>
+                                    <segment title="UAH"/>
+                                    <segment title="RUR"/>
+                                    <segment title="USD"/>
+                                    <segment title="EUR"/>
+                                </segments>
+                                <connections>
+                                    <action selector="pickerMoneySell:" destination="vXZ-lx-hvc" eventType="valueChanged" id="8Sh-cO-kVp"/>
+                                </connections>
+                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ4-b4-C0x">
                                 <rect key="frame" x="58" y="380" width="204" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -66,13 +60,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pp1-Tm-i2x">
-                                <rect key="frame" x="94" y="418" width="131" height="29"/>
+                                <rect key="frame" x="31" y="418" width="258" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Введите сумму" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXX-G3-IgT">
-                                <rect key="frame" x="31" y="196" width="259" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ваша сумма" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0J-Zw-9Xc">
+                                <rect key="frame" x="30" y="229" width="259" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -90,13 +84,23 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNX-Os-siO">
+                                <rect key="frame" x="27" y="182" width="265" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Ввести сумму">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="moneyImputBtn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kcc-L0-e6F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="converterName" destination="Ge9-JS-S8H" id="lsz-Zo-BhI"/>
-                        <outlet property="moneyImputField" destination="hR0-Mn-E8H" id="X4G-iR-jAe"/>
-                        <outlet property="moneyImputText" destination="TXX-G3-IgT" id="lMc-I1-qEu"/>
+                        <outlet property="moneyImputBtn" destination="CNX-Os-siO" id="OdR-xM-5f0"/>
+                        <outlet property="moneyImputText" destination="B0J-Zw-9Xc" id="TE7-V7-UsS"/>
                         <outlet property="moneyText1" destination="hIh-43-rjp" id="hdY-7L-Mkp"/>
                         <outlet property="moneyText2" destination="7dd-vd-FdL" id="Nge-do-dCf"/>
                         <outlet property="pickerMoneyBuy" destination="CVd-ye-1Qd" id="7dU-JZ-3Br"/>

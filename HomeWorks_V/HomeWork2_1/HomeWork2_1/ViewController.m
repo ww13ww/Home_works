@@ -8,12 +8,12 @@
 #import "Currencys.h"
 #import "ViewController.h"
 
-@interface ViewController () <NSURLConnectionDataDelegate>
+@interface ViewController () <NSURLConnectionDataDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *converterName;
 @property (weak, nonatomic) IBOutlet UILabel *moneyText1;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *pickerMoneySell;
+@property (weak, nonatomic) IBOutlet UIButton *moneyImputBtn;
 @property (weak, nonatomic) IBOutlet UILabel *moneyImputText;
-@property (weak, nonatomic) IBOutlet UITextField *moneyImputField;
 @property (weak, nonatomic) IBOutlet UILabel *moneyText2;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *pickerMoneyBuy;
 @property (weak, nonatomic) IBOutlet UIButton *resultBtn;
@@ -26,19 +26,15 @@
 
 NSString *inputCurrency1;
 NSString *inputCurrency2;
-NSString *inputText;
-NSString *outputText;
 NSArray *jsonArray;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSDictionary *info = [defaults object ForKey:@"RUR"];
-    
     [self getCurrencys];
 //    [self performSelector:@selector(getCurrencys) withObject:nil afterDelay:2]
 }
+
 
 -(void) getCurrencys
 {
@@ -49,17 +45,13 @@ NSArray *jsonArray;
 }
 
 
-//- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-//{
-//    NSLog(@"%@", response);
-//}
-
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     NSError *e = nil;
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
     
-    if (!jsonArray) {
+    if (!jsonArray)
+    {
         NSLog(@"Error parsing JSON: %@", e);
         [self getCurrencys];
         return;
@@ -70,40 +62,107 @@ NSArray *jsonArray;
         Currencys *currencys = [Currencys new];
         [currencys setValuesForKeysWithDictionary:current];
         [currencies addObject:currencys];
-        NSLog(@"%@", currencys.ccy);
         [currencys saveToUserDefaults];
     }
-    
-//    Currencys *currencys = currencies[1];
-    NSString *a = jsonArray[1][@"base_ccy"];
-    NSLog(@"Some Text___ %@", a);
-    NSLog(@"%@",jsonArray);
 }
-
-
 
 
 //1// tap
-- (IBAction)tapButton:(UIButton *)sender {
-    //    _tapButtonText.text = @"Button pressed";
+- (IBAction)moneyImputBtn:(UIButton *)sender {
+        UIAlertView *pocket = [[UIAlertView alloc]
+                               initWithTitle: @"Окно ввода"
+                               message: @"Введите сумму"
+                               delegate: self
+                               cancelButtonTitle: @"Отмена"
+                               otherButtonTitles: @"Принять", nil];
+        
+        pocket.alertViewStyle = UIAlertViewStylePlainTextInput;
+        UITextField *textField = [pocket textFieldAtIndex:0];
+        textField.keyboardType = UIKeyboardTypeNumberPad;
+        [pocket show];
 }
 
-// picker
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"Button Index =%i",buttonIndex);
+    if (buttonIndex == 0)
+    {
+        NSLog(@"You have clicked Cancel");
+    }
+    else if(buttonIndex == 1)
+    {
+        NSLog(@"You have clicked Ok");
+        NSString *taskText = [alertView textFieldAtIndex:0].text;
+        
+        if (![taskText isEqualToString:@""])
+        {
+            _moneyImputText.text =taskText;        }
+    }
+}
+
+
+- (IBAction)tapButton:(UIButton *)sender {
+    NSNumber *translate;
+    CGFloat moneyText = [_moneyImputText.text floatValue];
+    
+    if (moneyText ==0)
+    {
+        _resultText.text = @"Вы не ввели сумму!";
+        return;
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (!inputCurrency1)
+    {
+        inputCurrency1 =@"UAH";
+        translate = @(moneyText);
+    }
+    else
+    {
+        NSDictionary *info = [defaults objectForKey:inputCurrency1];
+        NSString *sale =[info valueForKey:@"sale"];
+        CGFloat saleNumber = [sale floatValue];
+        translate = @(saleNumber * moneyText);
+        NSLog(@"____%@", translate);
+    }
+    if (!inputCurrency2)
+    {
+        inputCurrency2 =@"UAH";
+        NSString * strResult = [translate stringValue];
+        _resultText.text = strResult;
+        return;
+    }
+    else
+    {
+        if (![inputCurrency2 isEqualToString:@"UAH"])
+        {
+            NSDictionary *info = [defaults objectForKey:inputCurrency2];
+            NSString *buy =[info valueForKey:@"buy"];
+            
+            CGFloat buyNumber = [buy floatValue];
+            float value = [translate floatValue];
+            translate = @(buyNumber * value);
+            NSString * strResult = [translate stringValue];
+            _resultText.text = strResult;
+        }
+        else
+        {
+            NSString * strResult = [translate stringValue];
+            _resultText.text = strResult;
+            return;
+        }
+    }
+}
+
+// pickerS
 - (IBAction)pickerMoneySell:(UISegmentedControl *)sender {
     inputCurrency1 = [sender titleForSegmentAtIndex:(NSUInteger) sender.selectedSegmentIndex];
-    NSLog(@"____%@", inputCurrency1);
-//    NSLog(@"%@",jsonArray);
 }
+
 
 - (IBAction)pickerMoneyBuy:(UISegmentedControl *)sender {
     inputCurrency2 = [sender titleForSegmentAtIndex:(NSUInteger) sender.selectedSegmentIndex];
-    NSLog(@"____%@", inputCurrency2);
-}
-
-//3// imputText
-- (BOOL)moneyImputField:(UITextField *)textField {
-    inputText = textField.text;
-    return YES;
 }
 
 @end

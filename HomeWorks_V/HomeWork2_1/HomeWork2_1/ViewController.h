@@ -10,10 +10,9 @@
 
 @interface ViewController : UIViewController
 
-// tap
+- (IBAction)moneyImputBtn:(UIButton *)sender;
 - (IBAction)tapButton:(UIButton *)sender;
-// 1-2
-- (IBAction)pickerMoneySell:(UISegmentedControl *)sender;
 
+- (IBAction)pickerMoneySell:(UISegmentedControl *)sender;
 - (IBAction)pickerMoneyBuy:(UISegmentedControl *)sender;
 @end
