@@ -10,6 +10,9 @@
 #import "ViewController.h"
 
 @interface ViewController () <NSURLConnectionDataDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, weak) UIRefreshControl * refresh;
 
 //@property (nonatomic, strong) NSURLConnection *connection;
 @end
@@ -20,6 +23,11 @@
 {
     [super viewDidLoad];
     [self performSelectorInBackground:@selector(checkServerConnection) withObject: nil];
+    
+    UIRefreshControl * refresh = [[UIRefreshControl alloc] init];
+    self.refresh = refresh;
+    [self.tableView addSubview:self.refresh];
+    [self.refresh addTarget: self action:@selector(refresh:) forControlEvents: UIControlEventEditingChanged];
 //    for (NSInteger i = 0; i<10; i++) {
 //        AuthorizationManager *manager = [AuthorizationManager sharedManager];
 //        NSLog(@"%@", manager);
@@ -29,6 +37,15 @@
 //    }
 //    [self getCurrencys];
     //    [self performSelector:@selector(getCurrencys) withObject:nil afterDelay:2]
+}
+
+-(void) refresh: (id)sender {
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.refresh endRefreshing];
+    });
+    
 }
 
 -(void) checkServerConnection {

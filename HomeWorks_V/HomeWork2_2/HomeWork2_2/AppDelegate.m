@@ -5,8 +5,11 @@
 //  Created by Viktoria on 31.01.15.
 //  Copyright (c) 2015 Viktoria. All rights reserved.
 //
+
+#import <MagicalRecord/MagicalRecord.h>
 #import "AuthorizationManager.h"
 #import "AppDelegate.h"
+#import "PictureLink.h"
 
 @implementation AppDelegate
 
@@ -14,6 +17,20 @@
 {
     [AuthorizationManager sharedManager].name = @"Autorization";
     // Override point for customization after application launch.
+    
+    [MagicalRecord setupSQLiteStackWithStoreNamed:@"db.sqlite"];
+//    [PictureLink deleteAllMatchingPredicate:nil];
+//    NSLog(@"%@", [PictureLink MR_findAll]);
+    NSLog(@"%@", [PictureLink MR_findFirst].link);
+    
+    PictureLink *pictureLink = [PictureLink MR_createEntity];
+    pictureLink.link = [[AuthorizationManager sharedManager] isServerReachable] ? @"YES" : @"NO";
+    pictureLink.published = [NSDate date];
+    [pictureLink.managedObjectContext MR_saveToPersistentStoreWithCompletion: ^(BOOL success, NSError * error) {
+        
+    }];
+
+    
     return YES;
 }
 							

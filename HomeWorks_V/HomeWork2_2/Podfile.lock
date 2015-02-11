@@ -1,15 +1,25 @@
 PODS:
-  - MagicalRecord (2.2):
-    - MagicalRecord/Core (= 2.2)
-  - MagicalRecord/Core (2.2)
+  - MagicalRecord (3.0.0.dev.1423512722):
+    - MagicalRecord/Core (= 3.0.0.dev.1423512722)
+  - MagicalRecord/Core (3.0.0.dev.1423512722)
   - Reachability (3.2)
 
 DEPENDENCIES:
-  - MagicalRecord
+  - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, branch `release/3.0`)
   - Reachability (~> 3.2)
 
+EXTERNAL SOURCES:
+  MagicalRecord:
+    :branch: release/3.0
+    :git: https://github.com/magicalpanda/MagicalRecord.git
+
+CHECKOUT OPTIONS:
+  MagicalRecord:
+    :commit: 924455a9f62739b33d8b20679c08175104866381
+    :git: https://github.com/magicalpanda/MagicalRecord.git
+
 SPEC CHECKSUMS:
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  MagicalRecord: 1108009980499d6f370a373c16afb1f52635fde8
   Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
 
 COCOAPODS: 0.35.0

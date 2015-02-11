@@ -1,4 +1,4 @@
 platform :ios, '7.0'
 
 pod 'Reachability', '~> 3.2'
-pod 'MagicalRecord'
+pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord.git', :branch => 'release/3.0'
