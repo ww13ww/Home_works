@@ -5,17 +5,23 @@
 //  Created by Viktoria on 22.03.15.
 //  Copyright (c) 2015 Viktoriia. All rights reserved.
 //
-
+#import <SpriteKit/SpriteKit.h>
 #import "ViewController.h"
 #import "MyScene.h"
+#import "FirstScene.h"
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Configure the view.
+    
+    SKView * skView = (SKView *)self.view;
+    skView.backgroundColor = [UIColor greenColor];
+    FirstScene *menuScene = [FirstScene sceneWithSize:skView.frame.size ];
+    
+    [skView presentScene:menuScene];
+    
+/*    // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
@@ -25,16 +31,18 @@
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
-    [skView presentScene:scene];
+    [skView presentScene:scene];*/
 }
 
-- (BOOL)shouldAutorotate
-{
+- (BOOL)shouldAutorotate {
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
+-(BOOL)prefersStatusBarHidden {
+    return  YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return UIInterfaceOrientationMaskAllButUpsideDown;
     } else {
@@ -42,8 +50,7 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
