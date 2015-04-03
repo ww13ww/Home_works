@@ -18,9 +18,10 @@
 @implementation FirstScene
 
 -(void) didMoveToView:(SKView *)view {
-    
- // 17 min
+    self.playButton = [SKSpriteNode spriteNodeWithImageNamed:@"play"];
+    [self addChild:self.playButton];
+    self.playButton.position = self.view.center;
+
+
 }
-
-
 @end
