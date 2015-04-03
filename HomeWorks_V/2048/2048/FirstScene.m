@@ -18,7 +18,7 @@
 @implementation FirstScene
 
 -(void) didMoveToView:(SKView *)view {
-    self.playButton = [SKSpriteNode spriteNodeWithImageNamed:@"play"];
+    self.playButton = [SKSpriteNode spriteNodeWithImageNamed:@"32"];
     [self addChild:self.playButton];
     self.playButton.position = self.view.center;
 
