@@ -24,6 +24,10 @@
 		751AAA0C1ACF2BFF00ED7AEA /* _048_2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 751AAA0B1ACF2BFF00ED7AEA /* _048_2Tests.m */; };
 		751AAA171ACF32F600ED7AEA /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 751AAA161ACF32F600ED7AEA /* CollectionViewController.m */; };
 		751AAA1A1ACF335000ED7AEA /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 751AAA191ACF335000ED7AEA /* CollectionCell.m */; };
+		751AAA1F1ACF36DA00ED7AEA /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 751AAA1B1ACF36D900ED7AEA /* 2.png */; };
+		751AAA201ACF36DA00ED7AEA /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 751AAA1C1ACF36D900ED7AEA /* 4.png */; };
+		751AAA211ACF36DA00ED7AEA /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 751AAA1D1ACF36DA00ED7AEA /* 8.png */; };
+		751AAA221ACF36DA00ED7AEA /* 16.png in Resources */ = {isa = PBXBuildFile; fileRef = 751AAA1E1ACF36DA00ED7AEA /* 16.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		751AAA161ACF32F600ED7AEA /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		751AAA181ACF335000ED7AEA /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
 		751AAA191ACF335000ED7AEA /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
+		751AAA1B1ACF36D900ED7AEA /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		751AAA1C1ACF36D900ED7AEA /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		751AAA1D1ACF36DA00ED7AEA /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		751AAA1E1ACF36DA00ED7AEA /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 16.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +133,10 @@
 				751AA9EF1ACF2BFE00ED7AEA /* Main_iPhone.storyboard */,
 				751AAA181ACF335000ED7AEA /* CollectionCell.h */,
 				751AAA191ACF335000ED7AEA /* CollectionCell.m */,
+				751AAA1B1ACF36D900ED7AEA /* 2.png */,
+				751AAA1C1ACF36D900ED7AEA /* 4.png */,
+				751AAA1D1ACF36DA00ED7AEA /* 8.png */,
+				751AAA1E1ACF36DA00ED7AEA /* 16.png */,
 				751AAA151ACF32F600ED7AEA /* CollectionViewController.h */,
 				751AAA161ACF32F600ED7AEA /* CollectionViewController.m */,
 				751AA9F21ACF2BFE00ED7AEA /* Main_iPad.storyboard */,
@@ -241,10 +253,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				751AAA221ACF36DA00ED7AEA /* 16.png in Resources */,
+				751AAA201ACF36DA00ED7AEA /* 4.png in Resources */,
 				751AA9F41ACF2BFE00ED7AEA /* Main_iPad.storyboard in Resources */,
 				751AA9F91ACF2BFF00ED7AEA /* Images.xcassets in Resources */,
+				751AAA1F1ACF36DA00ED7AEA /* 2.png in Resources */,
 				751AA9F11ACF2BFE00ED7AEA /* Main_iPhone.storyboard in Resources */,
 				751AA9E81ACF2BFE00ED7AEA /* InfoPlist.strings in Resources */,
+				751AAA211ACF36DA00ED7AEA /* 8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

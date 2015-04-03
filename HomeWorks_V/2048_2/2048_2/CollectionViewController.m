@@ -7,8 +7,12 @@
 //
 
 #import "CollectionViewController.h"
+#import "CollectionCell.h"
 
 @interface CollectionViewController ()
+{
+    NSArray *arrayCollectionImages;
+}
 
 @end
 
@@ -25,9 +29,25 @@
 
 - (void)viewDidLoad
 {
+    arrayCollectionImages  = [[NSArray alloc] initWithObjects:@"2.png", @"4.png", @"8.png", @"16.png", nil];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ReuseID" forIndexPath:indexPath];
+    [[cell collectionImageView] setImage:[UIImage imageNamed:[arrayCollectionImages objectAtIndex:indexPath.item]]];
+    return  cell;
+    
+}
+
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [arrayCollectionImages count];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
