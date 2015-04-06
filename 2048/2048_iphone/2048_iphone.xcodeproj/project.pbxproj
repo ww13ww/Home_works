@@ -14,6 +14,7 @@
 		8476DEA51AD31208006FFA22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8476DEA41AD31208006FFA22 /* Images.xcassets */; };
 		8476DEA81AD31208006FFA22 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8476DEA61AD31208006FFA22 /* LaunchScreen.xib */; };
 		8476DEB41AD31208006FFA22 /* _048_iphoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476DEB31AD31208006FFA22 /* _048_iphoneTests.m */; };
+		8476DEBF1AD32489006FFA22 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476DEBE1AD32489006FFA22 /* CollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		8476DEAD1AD31208006FFA22 /* 2048_iphoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 2048_iphoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8476DEB21AD31208006FFA22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8476DEB31AD31208006FFA22 /* _048_iphoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _048_iphoneTests.m; sourceTree = "<group>"; };
+		8476DEBD1AD32489006FFA22 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		8476DEBE1AD32489006FFA22 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				8476DE9C1AD31208006FFA22 /* AppDelegate.m */,
 				8476DE9E1AD31208006FFA22 /* ViewController.h */,
 				8476DE9F1AD31208006FFA22 /* ViewController.m */,
+				8476DEBD1AD32489006FFA22 /* CollectionViewController.h */,
+				8476DEBE1AD32489006FFA22 /* CollectionViewController.m */,
 				8476DEA11AD31208006FFA22 /* Main.storyboard */,
 				8476DEA41AD31208006FFA22 /* Images.xcassets */,
 				8476DEA61AD31208006FFA22 /* LaunchScreen.xib */,
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8476DEBF1AD32489006FFA22 /* CollectionViewController.m in Sources */,
 				8476DEA01AD31208006FFA22 /* ViewController.m in Sources */,
 				8476DE9D1AD31208006FFA22 /* AppDelegate.m in Sources */,
 				8476DE9A1AD31208006FFA22 /* main.m in Sources */,
@@ -412,6 +418,7 @@
 				8476DEB91AD31208006FFA22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8476DEBA1AD31208006FFA22 /* Build configuration list for PBXNativeTarget "2048_iphoneTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +427,7 @@
 				8476DEBC1AD31208006FFA22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
