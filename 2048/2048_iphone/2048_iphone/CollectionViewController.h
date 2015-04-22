@@ -10,4 +10,13 @@
 
 @interface CollectionViewController : UICollectionViewController
 
+-(void) allCells;
+/*
++ (instancetype)numberTileGameWithDimension:(NSUInteger)dimension
+                               winThreshold:(NSUInteger)threshold
+                            backgroundColor:(UIColor *)backgroundColor
+                                scoreModule:(BOOL)scoreModuleEnabled
+                             buttonControls:(BOOL)buttonControlsEnabled
+                              swipeControls:(BOOL)swipeControlsEnabled;
+*/
 @end
