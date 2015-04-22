@@ -8,24 +8,15 @@
 
 #import "CollectionViewController.h"
 #import "CollectionCell.h"
-#import "ControlView.h"
 
 #define ELEMENT_SPACING 10
 
-@interface CollectionViewController () <UICollectionViewDataSource> //< ControlViewProtocol>  //GameModelProtocol
+@interface CollectionViewController () <UICollectionViewDataSource>
 {
     NSArray *arrayCollectionImages;
     NSArray *countImages;
-    
 }
-//@property (nonatomic, strong) GameboardView *gameboard;
-
-//@property (nonatomic, strong) ControlView *controlView;
-
 @property (nonatomic) BOOL useScoreView;
-@property (nonatomic) BOOL useControlView;
-
-@property (nonatomic) NSUInteger dimension; // размер 4 на 4
 @property (nonatomic) NSUInteger threshold; // порог (2048)
 
 @end
@@ -35,195 +26,6 @@
 @synthesize swipeInfo;
 
 static NSString * const reuseIdentifier = @"ReuseID";
-
-/*+ (instancetype)numberTileGameWithDimension:(NSUInteger)dimension
-                               winThreshold:(NSUInteger)threshold
-                            backgroundColor:(UIColor *)backgroundColor
-                                scoreModule:(BOOL)scoreModuleEnabled
-                             buttonControls:(BOOL)buttonControlsEnabled
-                              swipeControls:(BOOL)swipeControlsEnabled {
-    CollectionViewController *c = [[self class] new];
-    c.dimension = dimension > 2 ? dimension : 2;
-    c.threshold = threshold > 8 ? threshold : 8;
-    c.useScoreView = scoreModuleEnabled;
-    c.useControlView = buttonControlsEnabled;
-    c.view.backgroundColor = backgroundColor ?: [UIColor whiteColor];
-    if (swipeControlsEnabled) {
-        [c setupSwipeControls];
-    }
-    return c;
-}*/
-//******************************************
-#pragma mark - Controller Lifecycle
-
-/*- (void)setupSwipeControls {
-    UISwipeGestureRecognizer *upSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                  action:@selector(upButtonTapped)];
-    upSwipe.numberOfTouchesRequired = 1;
-    upSwipe.direction = UISwipeGestureRecognizerDirectionUp;
-    [self.view addGestureRecognizer:upSwipe];
-    
-    UISwipeGestureRecognizer *downSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                    action:@selector(downButtonTapped)];
-    downSwipe.numberOfTouchesRequired = 1;
-    downSwipe.direction = UISwipeGestureRecognizerDirectionDown;
-    [self.view addGestureRecognizer:downSwipe];
-    
-    UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                    action:@selector(leftButtonTapped)];
-    leftSwipe.numberOfTouchesRequired = 1;
-    leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.view addGestureRecognizer:leftSwipe];
-    
-    UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                     action:@selector(rightButtonTapped)];
-    rightSwipe.numberOfTouchesRequired = 1;
-    rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:rightSwipe];
-}*/
-//******************************************
-
-
-/*- (void)setupGame {
-    //F3HScoreView *scoreView;
-    ControlView *controlView;
-    
-    CGFloat totalHeight = 0;
-    
-  */  // Set up score view
-    /*if (self.useScoreView) {
-        scoreView = [F3HScoreView scoreViewWithCornerRadius:6
-                                            backgroundColor:[UIColor darkGrayColor]
-                                                  textColor:[UIColor whiteColor]
-                                                   textFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:16]];
-        totalHeight += (ELEMENT_SPACING + scoreView.bounds.size.height);
-        self.scoreView = scoreView;
-    }
-    */
-    // Set up control view
-   /* if (self.useControlView) {
-        controlView = [ControlView controlViewWithCornerRadius:6
-                                                  backgroundColor:[UIColor blackColor]
-                                                  movementButtons:YES
-                                                       exitButton:NO
-                                                         delegate:self];
-        totalHeight += (ELEMENT_SPACING + controlView.bounds.size.height);
-        self.controlView = controlView;
-    }*/
-    
-    // Create gameboard
-    /*CGFloat padding = (self.dimension > 5) ? 3.0 : 6.0;
-    CGFloat cellWidth = floorf((230 - padding*(self.dimension+1))/((float)self.dimension));
-    if (cellWidth < 30) {
-        cellWidth = 30;
-    }*/
-   /*GameboardView *gameboard = [F3HGameboardView gameboardWithDimension:self.dimension
-                                                                 cellWidth:cellWidth
-                                                               cellPadding:padding
-                                                              cornerRadius:6
-                                                           backgroundColor:[UIColor blackColor]
-                                                           foregroundColor:[UIColor darkGrayColor]];
-    totalHeight += gameboard.bounds.size.height;
-    
-    // Calculate heights
-    CGFloat currentTop = 0.5*(self.view.bounds.size.height - totalHeight);
-    if (currentTop < 0) {
-        currentTop = 0;
-    }
-    
-    if (self.useScoreView) {
-        CGRect scoreFrame = scoreView.frame;
-        scoreFrame.origin.x = 0.5*(self.view.bounds.size.width - scoreFrame.size.width);
-        scoreFrame.origin.y = currentTop;
-        scoreView.frame = scoreFrame;
-        [self.view addSubview:scoreView];
-        currentTop += (scoreFrame.size.height + ELEMENT_SPACING);
-    }
-    
-    CGRect gameboardFrame = gameboard.frame;
-    gameboardFrame.origin.x = 0.5*(self.view.bounds.size.width - gameboardFrame.size.width);
-    gameboardFrame.origin.y = currentTop;
-    gameboard.frame = gameboardFrame;
-    [self.view addSubview:gameboard];
-    currentTop += (gameboardFrame.size.height + ELEMENT_SPACING);
-    
-    if (self.useControlView) {
-        CGRect controlFrame = controlView.frame;
-        controlFrame.origin.x = 0.5*(self.view.bounds.size.width - controlFrame.size.width);
-        controlFrame.origin.y = currentTop;
-        controlView.frame = controlFrame;
-        [self.view addSubview:controlView];
-    }
-    
-    self.gameboard = gameboard;
-    
-    // Create mode;
-    F3HGameModel *model = [F3HGameModel gameModelWithDimension:self.dimension
-                                                      winValue:self.threshold
-                                                      delegate:self];
-    [model insertAtRandomLocationTileWithValue:2];
-    [model insertAtRandomLocationTileWithValue:2];
-    self.model = model;
-*/
-//}
-
-
-/*
-#pragma mark - Model Protocol
-
-- (void)moveTileFromIndexPath:(NSIndexPath *)fromPath toIndexPath:(NSIndexPath *)toPath newValue:(NSUInteger)value {
-    [self.gameboard moveTileAtIndexPath:fromPath toIndexPath:toPath withValue:value];
-}
-
-- (void)moveTileOne:(NSIndexPath *)startA tileTwo:(NSIndexPath *)startB toIndexPath:(NSIndexPath *)end newValue:(NSUInteger)value {
-    [self.gameboard moveTileOne:startA tileTwo:startB toIndexPath:end withValue:value];
-}
-
-- (void)insertTileAtIndexPath:(NSIndexPath *)path value:(NSUInteger)value {
-    [self.gameboard insertTileAtIndexPath:path withValue:value];
-}
-
-- (void)scoreChanged:(NSInteger)newScore {
-    self.scoreView.score = newScore;
-}
-
-
-#pragma mark - Control View Protocol
-
-- (void)upButtonTapped {
-    [self.model performMoveInDirection:F3HMoveDirectionUp completionBlock:^(BOOL changed) {
-        if (changed) [self followUp];
-    }];
-}
-
-- (void)downButtonTapped {
-    [self.model performMoveInDirection:F3HMoveDirectionDown completionBlock:^(BOOL changed) {
-        if (changed) [self followUp];
-    }];
-}
-
-- (void)leftButtonTapped {
-    [self.model performMoveInDirection:F3HMoveDirectionLeft completionBlock:^(BOOL changed) {
-        if (changed) [self followUp];
-    }];
-}
-
-- (void)rightButtonTapped {
-    [self.model performMoveInDirection:F3HMoveDirectionRight completionBlock:^(BOOL changed) {
-        if (changed) [self followUp];
-    }];
-}
-
-- (void)resetButtonTapped {
-    [self.gameboard reset];
-    [self.model reset];
-    [self.model insertAtRandomLocationTileWithValue:2];
-    [self.model insertAtRandomLocationTileWithValue:2];
-}
-
-- (void)exitButtonTapped {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}*/
 //*******************************************
 - (void)viewDidUnload
 {
@@ -267,8 +69,6 @@ static NSString * const reuseIdentifier = @"ReuseID";
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeDown];
     //*********
-    
-    
     
 }
 -(void)didSwipe:(UISwipeGestureRecognizer*)swipe{
@@ -320,14 +120,13 @@ static NSString * const reuseIdentifier = @"ReuseID";
     //UIImageView *recipeImageview = (UIImageView *) [cell viewWithTag:120];
     //recipeImageview.image = [UIImage imageNamed:[arrayCollectionImages objectAtIndex:indexPath.row ]];
     cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backBig.png" ]];
-    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2048.png" ]];
+   // cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2048.png" ]];
     
     // Configure the cell
     return cell;
 }
 
-
-#pragma mark <UICollectionViewDelegate>
+//#pragma mark <UICollectionViewDelegate>
 /*
  -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
  {

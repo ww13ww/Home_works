@@ -15,7 +15,6 @@
 		8476DEA81AD31208006FFA22 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8476DEA61AD31208006FFA22 /* LaunchScreen.xib */; };
 		8476DEB41AD31208006FFA22 /* _048_iphoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476DEB31AD31208006FFA22 /* _048_iphoneTests.m */; };
 		8476DEBF1AD32489006FFA22 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476DEBE1AD32489006FFA22 /* CollectionViewController.m */; };
-		847F00D41ADC121C004F4EB3 /* ControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F00D31ADC121C004F4EB3 /* ControlView.m */; };
 		84C37A131AD5BD3A00B95AFF /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C37A121AD5BD3A00B95AFF /* CollectionCell.m */; };
 /* End PBXBuildFile section */
 
@@ -45,8 +44,6 @@
 		8476DEB31AD31208006FFA22 /* _048_iphoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _048_iphoneTests.m; sourceTree = "<group>"; };
 		8476DEBD1AD32489006FFA22 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		8476DEBE1AD32489006FFA22 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
-		847F00D21ADC121C004F4EB3 /* ControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlView.h; sourceTree = "<group>"; };
-		847F00D31ADC121C004F4EB3 /* ControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlView.m; sourceTree = "<group>"; };
 		84C37A111AD5BD3A00B95AFF /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionCell.h; path = ../CollectionCell.h; sourceTree = "<group>"; };
 		84C37A121AD5BD3A00B95AFF /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionCell.m; path = ../CollectionCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,8 +99,6 @@
 				8476DEA41AD31208006FFA22 /* Images.xcassets */,
 				8476DEA61AD31208006FFA22 /* LaunchScreen.xib */,
 				8476DE971AD31208006FFA22 /* Supporting Files */,
-				847F00D21ADC121C004F4EB3 /* ControlView.h */,
-				847F00D31ADC121C004F4EB3 /* ControlView.m */,
 			);
 			path = 2048_iphone;
 			sourceTree = "<group>";
@@ -236,7 +231,6 @@
 			files = (
 				8476DEBF1AD32489006FFA22 /* CollectionViewController.m in Sources */,
 				84C37A131AD5BD3A00B95AFF /* CollectionCell.m in Sources */,
-				847F00D41ADC121C004F4EB3 /* ControlView.m in Sources */,
 				8476DEA01AD31208006FFA22 /* ViewController.m in Sources */,
 				8476DE9D1AD31208006FFA22 /* AppDelegate.m in Sources */,
 				8476DE9A1AD31208006FFA22 /* main.m in Sources */,
