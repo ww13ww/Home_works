@@ -58,10 +58,13 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="65" minY="200" maxX="65" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <imageView key="backgroundView" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backBig" id="oXz-tk-rma">
+                        <label key="backgroundView" opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="text" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" id="o38-nt-JrT">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReuseID" id="06X-JD-PcR" customClass="CollectionCell">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -89,6 +92,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="cRU-s9-LVh"/>
+                    <connections>
+                        <outlet property="swipeInfo" destination="o38-nt-JrT" id="xmt-01-Vi1"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0M-4t-Kfr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,6 +103,5 @@
     </scenes>
     <resources>
         <image name="back" width="300" height="300"/>
-        <image name="backBig" width="1920" height="1200"/>
     </resources>
 </document>

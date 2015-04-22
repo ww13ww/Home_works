@@ -10,7 +10,9 @@
 
 @interface CollectionViewController : UICollectionViewController
 
--(void) allCells;
+@property (strong, nonatomic) IBOutlet UILabel *swipeInfo;
+
+//-(void) allCells;
 /*
 + (instancetype)numberTileGameWithDimension:(NSUInteger)dimension
                                winThreshold:(NSUInteger)threshold

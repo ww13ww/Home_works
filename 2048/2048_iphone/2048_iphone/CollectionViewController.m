@@ -32,6 +32,8 @@
 
 @implementation CollectionViewController
 
+@synthesize swipeInfo;
+
 static NSString * const reuseIdentifier = @"ReuseID";
 
 /*+ (instancetype)numberTileGameWithDimension:(NSUInteger)dimension
@@ -223,6 +225,12 @@ static NSString * const reuseIdentifier = @"ReuseID";
     [self dismissViewControllerAnimated:YES completion:nil];
 }*/
 //*******************************************
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    self.swipeInfo =nil;
+}
+
 
 - (void)viewDidLoad {
     
@@ -233,6 +241,46 @@ static NSString * const reuseIdentifier = @"ReuseID";
     
     // Register cell classes
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    
+    //*********
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(didSwipe:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]
+                                            initWithTarget:self
+                                            action:@selector(didSwipe:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
+    
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]
+                                         initWithTarget:self
+                                         action:@selector(didSwipe:)];
+    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeUp];
+    
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(didSwipe:)];
+    swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:swipeDown];
+    //*********
+    
+    
+    
+}
+-(void)didSwipe:(UISwipeGestureRecognizer*)swipe{
+    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+        swipeInfo.text = @"Left";
+    } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+        swipeInfo.text = @"Right";
+    } else if (swipe.direction == UISwipeGestureRecognizerDirectionUp) {
+        swipeInfo.text = @"Up";
+    } else if (swipe.direction == UISwipeGestureRecognizerDirectionDown) {
+        swipeInfo.text = @"Down";
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
